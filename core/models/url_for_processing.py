@@ -1,5 +1,6 @@
 from django.db import models
 from .choices import STATUS_URL_PROCESSING
+from datetime import datetime
 
 
 class URLForProcessing(models.Model):
@@ -15,9 +16,9 @@ class URLForProcessing(models.Model):
         default=STATUS_URL_PROCESSING.WAIT,
         verbose_name='Operation status'
     )
-    start_processing = models.DateTimeField()
-    created_at = models.DateTimeField(
-        auto_now_add=True
+    start_processing = models.DateTimeField(
+        blank=True,
+        null=True
     )
 
     def __str__(self):
@@ -25,5 +26,5 @@ class URLForProcessing(models.Model):
 
     def save(self, force_insert=False, force_update=False, using=None,
              update_fields=None):
-        self.start_processing = self.created_at + self.timeshift
+        self.start_processing = datetime.now() + self.timeshift
         return super().save(force_insert, force_update, using, update_fields)

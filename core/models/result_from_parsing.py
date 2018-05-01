@@ -18,6 +18,9 @@ class ResultFromParsing(models.Model):
         max_length=256,
         blank=True
     )
+    created_at = models.DateTimeField(
+        auto_now_add=True
+    )
 
     def __str__(self):
         return 'Results {}'.format(self.url.url)
