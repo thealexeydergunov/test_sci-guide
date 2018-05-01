@@ -13,4 +13,8 @@ class URLForProcessingAdmin(admin.ModelAdmin):
 
 @admin.register(ResultFromParsing)
 class ResultFromParsingAdmin(admin.ModelAdmin):
-    pass
+    list_display = ('url', 'created_at')
+    list_filter = ('created_at',)
+    fields = ('url', 'title', 'charset', 'h1', 'created_at')
+    readonly_fields = ('url', 'title', 'charset', 'h1', 'created_at')
+    search_fields = ('url__url',)
