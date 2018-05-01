@@ -16,3 +16,14 @@ class STATUS_URL_PROCESSING(object):
         (ERROR, 'error')
     )
     DICT = dict(CHOICES)
+
+
+class STATUS_CRON(object):
+    WAIT = 1
+    PROCESS = 2
+
+    CHOICES = (
+        (WAIT, 'wait'),
+        (PROCESS, 'process')
+    )
+    DICT = dict(CHOICES)
