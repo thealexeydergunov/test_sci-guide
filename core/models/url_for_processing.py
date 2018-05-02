@@ -26,8 +26,9 @@ class URLForProcessing(models.Model):
 
     def save(self, force_insert=False, force_update=False, using=None,
              update_fields=None):
-        if self.timeshift:
-            self.start_processing = datetime.now() + self.timeshift
-        else:
-            self.start_processing = datetime.now()
+        if not self.start_processing:
+            if self.timeshift:
+                self.start_processing = datetime.now() + self.timeshift
+            else:
+                self.start_processing = datetime.now()
         return super().save(force_insert, force_update, using, update_fields)

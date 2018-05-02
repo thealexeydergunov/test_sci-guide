@@ -4,7 +4,8 @@ from django.db import models
 class ResultFromParsing(models.Model):
     url = models.OneToOneField(
         'core.URLForProcessing',
-        on_delete=models.CASCADE
+        on_delete=models.CASCADE,
+        verbose_name='URL'
     )
     title = models.CharField(
         max_length=256,
@@ -14,8 +15,7 @@ class ResultFromParsing(models.Model):
         max_length=10,
         blank=True
     )
-    h1 = models.CharField(
-        max_length=256,
+    h1 = models.TextField(
         blank=True
     )
     created_at = models.DateTimeField(
