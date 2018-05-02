@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rusults</title>
+</head>
+<body>
+    <div>
+        <textarea cols="150" rows="50">
+            {% for strdate, status in status_list %}
+                {{ strdate }} {{ status }}
+            {% endfor %}
+        </textarea>
+    </div>
+    <div>
+        <textarea cols="150" rows="50">
+            {% for url, title, charset, h1 in results_list %}
+                {{ url }} - {{ title }}, {{ charset }}{% if h1 %}, {{ h1 }}{% endif %}.
+
+            {% endfor %}
+        </textarea>
+    </div>
+</body>
+</html>
