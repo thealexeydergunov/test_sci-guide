@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'django_cron',
+
     'core',
 ]
 
@@ -127,6 +129,11 @@ MEDIA_URL = '/media/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+# Cron settings
+
+CRON_CLASSES = [
+    'core.cron.ParseURLs',
+]
 
 try:
     from .settings_local import *
